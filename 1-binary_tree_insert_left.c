@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 #include <stdlib.h>
 
-/*
+/**
  * binary_tree_insert_left - A new_node at the left to be inserted
  * Also existing left to the new_node left to be removed.
  * @parent: The root node
@@ -11,25 +11,20 @@
 
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
-	binary_tree_t *new_node, *old_left_child;
+	binary_tree_t *new_node;
 
 	if (parent == NULL)
 		return (NULL);
 
-	new_node = malloc(sizeof(binary_tree_t));
-
+	new_node = binary_tree_node(parent, value);
 	if (new_node == NULL)
 		return (NULL);
 
-	old_left_child = parent->left;
-	new_node->n = value;
-	new_node->parent = parent;
-	new_node->left = old_left_child;
-	new_node->right = NULL;
-
-	if (old_left_child != NULL)
-		old_left_child->parent = new_node;
-
+	if (parent->left != NULL)
+	{
+		new_node = parent->left;
+		parent->left->parent = new_node;
+	}
 	parent->left = new_node;
 
 	return (new_node);
