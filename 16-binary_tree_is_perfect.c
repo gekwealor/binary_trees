@@ -17,7 +17,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (tree->right == NULL && tree->left == NULL)
 		return (1);
 
-	power = (size_t)_pow_recursion(2, height + 1);
+	power = size_t _power_recursion(2, height + 1);
 	return (power - 1 == nodes);
 
 	height = binary_tree_height(tree);
