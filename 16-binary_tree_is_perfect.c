@@ -20,7 +20,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	height = binary_tree_height(tree);
 	nodes = binary_tree_size(tree);
 
-	power = int is_power_recursion(2, height + 1);
+	power = (size_t)is_pow_recursion(2, height + 1);
 	return (power - 1 == nodes);
 
 }
