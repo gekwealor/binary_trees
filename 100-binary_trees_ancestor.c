@@ -8,46 +8,47 @@
   * if no one was found, then NULL.
   */
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
-		                const binary_tree_t *second)
+				const binary_tree_t *second)
+
 {
-	size_t base_first, base_second;
+	size_t depth_first, depth_second;
 
 	if (!first || !second)
 		return (NULL);
 
-	base_first = binary_tree_base(first);
-	base_second = binary_tree_base(second);
+	depth_first = binary_tree_depth(first);
+	depth_second = binary_tree_depth(second);
 
-	while (base_first > base_second)
+	while (depth_first > depth_second)
 	{
 		first = first->parent;
-		base_first--;
+		depth_first--;
 	}
-	while (base_second > base_first)
+	while (depth_second > depth_first)
 	{
 		second = second->parent;
-		base_second--;
+		depth_second--;
 	}
 	return ((binary_tree_t *)first);
 }
 
 /**
-  * binary_tree_base - Measures the base of a node
-  * @tree: node to calculate the base
-  * Return: base of the node, 0 if NULL
+  * binary_tree_depth - Measures the depth of a node
+  * @tree: node to calculate the depth
+  * Return: depth of the node, 0 if NULL
   */
-size_t binary_tree_base(const binary_tree_t *tree)
+size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	size_t base = 0;
+	size_t depth = 0;
 
 	if (!tree)
 		return (0);
 
 	while (tree->parent)
 	{
-		base++;
+		depth++;
 		tree = tree->parent;
 	}
 
-	return (base);
+	return (depth);
 }

@@ -49,7 +49,7 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_root(const binary_tree_t *node);
 
 /*ADVANCED TASK */
-size_t binary_tree_base(const binary_tree_t *tree)
+size_t binary_tree_depth(const binary_tree_t *tree)
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
 
 #endif /* _BINARY_TREES_H_ */
